@@ -1,5 +1,5 @@
 #Ignore the ipynb file
-check.ipynb
+*.ipynb
 
 index01.html
 
