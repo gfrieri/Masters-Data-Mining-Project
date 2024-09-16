@@ -20,6 +20,18 @@ npm run serve
 npm run build
 ```
 
+### Compiles and deploys for gh-webpage branch
+
+```
+npm run deploy
+```
+
+### Check the dist locally
+
+```
+serve -s dist
+```
+
 ### Lints and fixes files
 
 ```
