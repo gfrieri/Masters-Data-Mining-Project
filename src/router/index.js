@@ -5,6 +5,7 @@ import eda from "../views/entrega2/eda.vue";
 
 const routes = [
   { path: "/", component: LandingPage },
+  { path: "/Master-s-Data-Mining-Proyect/", component: LandingPage },
   { path: "/entrega1/seleccion_modelo", component: seleccion_modelo },
   { path: "/entrega2/eda", component: eda },
 ];
