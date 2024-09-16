@@ -36,20 +36,21 @@ a:hover {
   padding: 40px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
   margin: 40px auto;
-  max-width: 900px;
-  width: 90%;
+  max-width: 1000px;
+  width: 100%;
 }
 
 .content-wrapper {
-    margin-left: auto; /* Centra el contenido horizontalmente */
-    margin-right: auto; /* Centra el contenido horizontalmente */
-    max-width: 1000px; /* O el ancho que prefieras */
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-    position: relative; /* Asegura que el contenido no está afectado por la barra lateral */
-    z-index: 10; /* Mantiene el contenido por encima de otros elementos si es necesario */
+  display: flex;
+  margin-left: auto; /* Centra el contenido horizontalmente */
+  margin-right: auto; /* Centra el contenido horizontalmente */
+  max-width: 1000px; /* O el ancho que prefieras */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative; /* Asegura que el contenido no está afectado por la barra lateral */
+  z-index: 10; /* Mantiene el contenido por encima de otros elementos si es necesario */
   }
   
 
@@ -81,6 +82,7 @@ a:hover {
   .container {
     padding: 20px;
     margin: 20px;
+    width: calc(100% - 40px); /* Adjust width to maintain margin */
   }
 
   h1 {

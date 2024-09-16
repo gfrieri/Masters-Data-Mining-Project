@@ -26,5 +26,5 @@ pnpm-debug.log*
 *.ipynb
 
 data.csv
-data.parquet
 /obsolete
+/processing

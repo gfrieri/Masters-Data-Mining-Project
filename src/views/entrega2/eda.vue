@@ -1,108 +1,180 @@
 <template>
   <div class="container">
     <div class="header">
-      <h1>Entrega 1: Selección del Modelo</h1>
+      <h1>Entrega 2: Análisis Exploratorio de Datos (EDA)</h1>
     </div>
     <div class="content">
       <p>
-        La propuesta de proyecto final para Minería de Datos en la Maestría de Ingeniería de Sistemas consiste en utilizar una fuente de créditos activos
-        suministrada por Datos Abiertos para determinar, con base al perfil de las personas, los beneficios crediticios a los que podrían acceder.
+        Observaciones: 25053597
+        <br> 
+        Variables: 23
       </p>
-      <h3>Modelo Escogido: <a href="https://en.wikipedia.org/wiki/Gradient_boosting" target="_blank">Gradient Boosting Machine (GBM)</a></h3>
-      <h3>Justificación:</h3>
-      <p>
-        Los modelos GBM (Gradient Boosting Machines) son muy efectivos para manejar información estructurada tabularmente, 
-        la cual es la estructura comúnmente manejada para almacenar datos financieros. Además, tiene la capacidad de trabajar 
-        con un gran número de datos categóricos y numéricos [1], lo cual es perfecto para un caso de perfilamiento como el de este proyecto, 
-        donde se deben tener en cuenta descripciones de las personas. Funcionalmente, este modelo realiza un conjunto de árboles de decisión 
-        donde los árboles sucesivos intentar corregir los errores previos. Si bien este modelo posee una alta precisión, 
-        resistencia al sobreajuste y capacidad de capturar relaciones no lineales, para lograrlo conlleva un alto costo computacional. 
-        No obstante, se podría argumentar que estas ventajas superan los costos. Así mismom hay GBMs más ligeras para un procesamiento 
-        más rápido y menos exigente.
-      </p>
-      <h3>Relevancia:</h3>
-      <p>
-        Las GBM son actualmente utilizadas en la industria financiera para calificación crediticia, detección de fraudes y evaluación de riesgos. 
-        Al poder manejar datos grandes, complejos y con múltiples características, son adecuadas para predecir beneficios crediticios con base al 
-        perfil de las personas. Estudios han demostrado que GBM supera a otros modelos de aprendizaje automático (incluyendo los de aprendizaje 
-        profundo) en diversas aplicaciones financieras, debido a su eficiencia y menor demanda computacional para niveles de precisión similares [2]. 
-        Además, gracias a su composición, es capaz de manejar datos desequilibrados, lo cual es común en entornos financieros.
-      </p>
-      <h3>Librerías:</h3>
-      <ul>
-        <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" target="_blank">Scikit-learn:</a> Es una librería de aprendizaje automático que incluye una implementación de GBM.</li>
-        <li><a href="https://xgboost.readthedocs.io/en/stable/" target="_blank">XGBoost:</a> Es una implementación eficiente y escalable de GBM.</li>
-        <li><a href="https://lightgbm.readthedocs.io/en/stable/" target="_blank">LightGBM:</a> Es una versión ligera y más rápida para implementar GBM.</li>
-        <li><a href="https://catboost.ai/" target="_blank">CatBoost:</a> Es una librería de GMB especializada para variables categoricas.</li>
-      </ul>
-      <h3>Referencias:</h3>
-      <ol>
-        <li>
-          M. Reyners, "An Introduction to Gradient Boosting," Winter School on Quantitative Finance, Univ. of Amsterdam, 2019
-          Disponible: <a href=https://staff.fnwi.uva.nl/p.j.c.spreij/winterschool/19ReynersPaper.pdf>https://staff.fnwi.uva.nl/p.j.c.spreij/winterschool/19ReynersPaper.pdf</a>. [Accedido: 18-ago-2024].
-        </li>
-        <li>
-          M. Schmitt, "Deep Learning vs. Gradient Boosting: Benchmarking state-of-the-art machine learning algorithms for credit scoring,"
-          arXiv, May 2022. Disponible: <a href=https://arxiv.org/abs/2205.10535>https://arxiv.org/abs/2205.10535</a>. [Accedido: 18-ago-2024].
-        </li>
-        <li>
-          Dataset fuente: 
-          "Tarjetas de crédito Colombia," Datos Abiertos Colombia, 
-          <a href="https://www.datos.gov.co/Econom-a-y-Finanzas/Tarjetas-de-cr-dito-Colombia/innv-fdhy">https://www.datos.gov.co/Econom-a-y-Finanzas/Tarjetas-de-cr-dito-Colombia/innv-fdhy</a>.
-          [Accedido: 18-ago-2024].
-        </li>
-      </ol>
+      <h2>Descripción General de los Datos</h2>
+      <h4>Lista de Variables y Tipos de Datos</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(type, variable) in dataTypes" :key="variable">
+            <td>{{ variable }}</td>
+            <td>{{ type }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h4>Resumen Estadístico de Las Variables Númericas</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Count</th>
+            <th>Mean</th>
+            <th>Std</th>
+            <th>Min</th>
+            <th>25%</th>
+            <th>50%</th>
+            <th>75%</th>
+            <th>Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(stats, variable) in summaryStats" :key="variable">
+            <td>{{ variable }}</td>
+            <td>{{ stats.count }}</td>
+            <td>{{ stats.mean }}</td>
+            <td>{{ stats.std }}</td>
+            <td>{{ stats.min }}</td>
+            <td>{{ stats.q25 }}</td>
+            <td>{{ stats.q50 }}</td>
+            <td>{{ stats.q75 }}</td>
+            <td>{{ stats.max }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="footer">
-        Fecha de Entrega: Agosto 18, 2024
-        <br>
-        Desarrollado por: Giuliano Frieri
+      Fecha de Entrega: Septiembre 15, 2024
+      <br>
+      Desarrollado por: Giuliano Frieri
     </div>
   </div>
 </template>
-  
-  <script>
-  export default {
-    name: 'seleccion_modelo',
-  };
-  </script>
-  
-  <style scoped>
-  /* Aquí podemos integrar el CSS existente */
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-  
-  .container {
-    /* Usa las reglas de tu styles.css */
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    width: 90%;
-    padding: 25px 30px;
-    box-sizing: border-box;
-    border-left: 5px solid #555;
-    position: relative;
-    overflow-y: auto;
-    max-height: 90vh;
+
+<script>
+export default {
+  name: 'seleccion_modelo',
+  data() {
+    return {
+      // Data types of the variables
+      dataTypes: {
+        'Tipo_Entidad': 'int64',
+        'Nombre_Tipo_Entidad': 'object',
+        'Codigo_Entidad': 'int64',
+        'Nombre_Entidad': 'object',
+        'Fecha_Corte': 'object',
+        'Tipo_de_persona': 'object',
+        'Sexo': 'object',
+        'Tamaño_de_empresa': 'object',
+        'Tipo_de_crédito': 'object',
+        'Tipo_de_garantía': 'object',
+        'Producto_de_crédito': 'object',
+        'Plazo_de_crédito': 'object',
+        'Tasa_efectiva_promedio_ponderada': 'float64',
+        'margen_adicional': 'float64',
+        'Montos_desembolsados': 'float64',
+        'Numero_de_creditos_desembolsados': 'int64',
+        'Grupo_Etnico': 'object',
+        'Antiguedad_de_la_empresa': 'object',
+        'Tipo_de_Tasa': 'object',
+        'Rango_monto_desembolsado': 'object',
+        'Clase_deudor': 'object',
+        'Codigo_CIIU': 'float64',
+        'Codigo_Municipio': 'float64'
+      },
+      // Summary statistics for the numerical variables
+      summaryStats: {
+        'Tipo_Entidad': { count: '25053600', mean: '1.59', std: '3.13', min: '1', q25: '1', q50: '1', q75: '1', max: '32' },
+        'Codigo_Entidad': { count: '25053600', mean: '25.05', std: '20.68', min: '1', q25: '7', q50: '26', q75: '39', max: '125' },
+        'Tasa_efectiva_promedio_ponderada': { count: '25053600', mean: '24.28', std: '15.98', min: '0', q25: '1.67', q50: '30.81', q75: '34.85', max: '87' },
+        'margen_adicional': { count: '25053600', mean: '0.20', std: '1.55', min: '-12', q25: '0', q50: '0', q75: '0', max: '33.98' },
+        'Montos_desembolsados': { count: '25053600', mean: '50595290', std: '1839356000', min: '0', q25: '206000', q50: '1000000', q75: '4234900', max: '1.02864e+12' },
+        'Numero_de_creditos_desembolsados': { count: '25053600', mean: '40.89', std: '2101.34', min: '0', q25: '1', q50: '1', q75: '4', max: '830668' },
+        'Codigo_CIIU': { count: '24802140', mean: '3842.48', std: '3288.41', min: '10', q25: '90', q50: '4644', q75: '6619', max: '9900' },
+        'Codigo_Municipio': { count: '24802140', mean: '33999.40', std: '27414.80', min: '5001', q25: '11001', q50: '23001', q75: '66001', max: '99773' }
+      }
+    };
   }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 26px;
-    font-weight: 700;
-    color: #555;
+};
+</script>
+
+<style scoped>
+.container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.header h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+.content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.content h3, h4 {
+  color: #444;
+  margin-top: 20px;
+}
+
+.content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* Allows table cells to adjust based on content */
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th, td {
+  padding: 8px;
+  font-size: 16px;
+  white-space: normal; /* Allows text to wrap */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.footer {
+  text-align: right;
+  font-size: 14px;
+  color: #777;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  th, td {
+    font-size: 14px; /* Smaller font size for smaller screens */
   }
-  
-  .content p {
-    margin-bottom: 15px;
-  }
-  
-  .footer {
-    text-align: right;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-  }
-  </style>
-  
+}
+</style>

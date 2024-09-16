@@ -32,7 +32,7 @@ export default {
   border-radius: 12px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
   margin: 40px auto;
-  max-width: 900px;
+  max-width: 1000px;
   width: 90%;
 }
 </style>
