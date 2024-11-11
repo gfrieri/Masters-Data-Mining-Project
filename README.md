@@ -1,6 +1,6 @@
 # masters-dm-proyect
 
-https://gfrieri.github.io/Master-s-Data-Mining-Proyect/
+https://gfrieri.github.io/Masters-Data-Mining-Proyect/
 
 ## Project setup
 
