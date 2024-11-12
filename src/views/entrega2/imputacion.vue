@@ -1,68 +1,44 @@
 <template>
   <div class="container">
     <div class="header">
-      <h1>Entrega 2: Imputación de Datos</h1>
+      <h1>Delivery 2: Data Imputation</h1>
     </div>
     <div class="content">
-      <h3>1. Imputación por Media/Mediana para Columnas Numéricas:</h3>
-      <p>
-        <strong>Método:</strong> Se reemplazaron los valores faltantes con la media o la mediana de la columna.
-        <br><strong>Justificación:</strong>
-        <ul>
-          <li><strong>Imputación por Media:</strong> Adecuada para datos distribuidos normalmente, ya que preserva la media del conjunto de datos.</li>
-          <li><strong>Imputación por Mediana:</strong> Preferida para datos sesgados, ya que es menos afectada por los valores atípicos.</li>
-        </ul>
-      </p>
+      <br/>
 
-      <h3>2. Imputación por Moda para Columnas Categóricas:</h3>
+      <h3>1. Resampling to Monthly Frequency:</h3>
       <p>
-        <strong>Método:</strong> Se reemplazaron los valores faltantes con la moda (el valor más frecuente) de la columna.
-        <br><strong>Justificación:</strong> La imputación por moda es efectiva para datos categóricos, ya que mantiene la categoría más común, la cual es una estimación razonable para los valores faltantes.
+        <strong>Method:</strong> All datasets were resampled to monthly frequency:
       </p>
+      <ul>
+        <li>Stock prices (e.g., NVDA, S&P 500): The last daily value of each month was retained to reflect end-of-month prices.</li>
+        <li>VIX: Monthly averages were computed to represent overall market volatility for the month.</li>
+      </ul>
 
-      <h3>3. Eliminación de Filas/Columnas:</h3>
+      <h3>2. Imputation for Macroeconomic Data:</h3>
       <p>
-        <strong>Método:</strong> Se eliminaron filas o columnas con valores faltantes cuando el porcentaje de valores faltantes era elevado.
-        <br><strong>Justificación:</strong> Si una columna tiene un alto porcentaje de valores faltantes, la imputación puede introducir un sesgo significativo. En estos casos, eliminar dichas columnas o filas puede ser una mejor opción para mantener la calidad de los datos.
+        <strong>Method:</strong> For GDP and employee data:
       </p>
+      <ul>
+        <li>GDP (trimestral): Forward filling was applied to propagate trimestral values to the corresponding months.</li>
+        <li>Employee numbers (yearly): Forward filling was applied to assign the same value across all months of the year.</li>
+      </ul>
 
-      <h3>4. Relleno Adelante/Atrás para Datos de Series Temporales:</h3>
+      <h3>3. Justification for Monthly Management:</h3>
       <p>
-        <strong>Método:</strong> Se utilizó el valor anterior o siguiente para rellenar los valores faltantes en los datos de series temporales.
-        <br><strong>Justificación:</strong> El método de relleno hacia adelante (propagar la última observación válida) o hacia atrás (usar la próxima observación válida) es útil en series temporales, donde se asume que el valor faltante es similar al anterior o al siguiente.
+        Stocks tend to respond to monthly trends, and the majority of the data (e.g., stock prices, VIX, S&P 500) 
+        originated in daily or monthly frequencies. Therefore:
       </p>
+      <ul>
+        <li>Data was standardized to monthly intervals to enable consistent integration and analysis.</li>
+        <li>GDP (trimestral) and employee numbers (yearly) were retained as key features to provide broader economic context.</li>
+      </ul>
 
-      <h3>Nota Importante:</h3>
-      <p>
-        Muchos de los pasos de imputación se vieron reducidos gracias al proceso de limpieza de datos realizado previamente, el cual eliminó muchas inconsistencias y valores faltantes.
-      </p>
-
-      <h3>Resumen:</h3>
-      <p>
-        <ul>
-          <li><strong>Imputación por Media/Mediana:</strong> Utilizada para columnas numéricas según la distribución de los datos.</li>
-          <li><strong>Imputación por Moda:</strong> Aplicada en columnas categóricas para mantener la categoría más común.</li>
-          <li><strong>Eliminación de Filas/Columnas:</strong> Usada cuando el porcentaje de valores faltantes era alto para evitar sesgos.</li>
-          <li><strong>Relleno Adelante/Atrás:</strong> Aplicado en datos de series temporales para mantener la continuidad.</li>
-        </ul>
-      </p>
-      <h3>Datos Antes de los Procesos:</h3>
-      <p>
-        Observaciones: 25053597
-        <br> 
-        Variables: 23
-      </p>
-      <h3>Datos Después de los Procesos:</h3>
-      <p>
-        Observaciones: 21327254
-        <br> 
-        Variables: 166
-      </p>
     </div>
     <div class="footer">
-      Fecha de Entrega: Septiembre 15, 2024
-      <br>
-      Desarrollado por: Giuliano Frieri
+      Delivery date: September 15, 2024
+      <br/>
+      Developed by: Giuliano Frieri
     </div>
   </div>
 </template>
@@ -96,11 +72,6 @@ export default {
 .content h3 {
   color: #444;
   margin-top: 20px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
 }
 
 ul li {

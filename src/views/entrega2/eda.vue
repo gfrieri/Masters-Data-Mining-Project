@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="header">
-      <h1>Entrega 2: Análisis Exploratorio de Datos (EDA)</h1>
+      <h1>Delivery 2: Exploratory Data Analysis (EDA)</h1>
     </div>
     <div class="content">
       <p>
-        Observaciones: 25053597
-        <br> 
-        Variables: 23
+        Observations: {{ numberOfRows }}
+        <br />
+        Variables: {{ numberOfColumns }}
       </p>
-      <h2>Descripción General de los Datos</h2>
-      <h4>Lista de Variables y Tipos de Datos</h4>
+      <h2>General Data Description</h2>
+      <h4>Variable List and Data Types</h4>
       <table>
         <thead>
           <tr>
@@ -25,8 +25,15 @@
           </tr>
         </tbody>
       </table>
-      
-      <h4>Resumen Estadístico de Las Variables Númericas</h4>
+
+      <h4>Variable Descriptions</h4>
+      <ul>
+        <li v-for="(description, variable) in variableDescriptions" :key="variable">
+          <strong>{{ variable }}:</strong> {{ description }}
+        </li>
+      </ul>
+
+      <h4>Summary Statistics for Numerical Variables</h4>
       <table>
         <thead>
           <tr>
@@ -57,57 +64,114 @@
       </table>
     </div>
     <div class="footer">
-      Fecha de Entrega: Septiembre 15, 2024
-      <br>
-      Desarrollado por: Giuliano Frieri
+      Delivery date: September 15, 2024
+      <br />
+      Developed by: Giuliano Frieri
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'seleccion_modelo',
+  name: "exploratory-data-analysis",
   data() {
     return {
-      // Data types of the variables
-      dataTypes: {
-        'Tipo_Entidad': 'int64',
-        'Nombre_Tipo_Entidad': 'object',
-        'Codigo_Entidad': 'int64',
-        'Nombre_Entidad': 'object',
-        'Fecha_Corte': 'object',
-        'Tipo_de_persona': 'object',
-        'Sexo': 'object',
-        'Tamaño_de_empresa': 'object',
-        'Tipo_de_crédito': 'object',
-        'Tipo_de_garantía': 'object',
-        'Producto_de_crédito': 'object',
-        'Plazo_de_crédito': 'object',
-        'Tasa_efectiva_promedio_ponderada': 'float64',
-        'margen_adicional': 'float64',
-        'Montos_desembolsados': 'float64',
-        'Numero_de_creditos_desembolsados': 'int64',
-        'Grupo_Etnico': 'object',
-        'Antiguedad_de_la_empresa': 'object',
-        'Tipo_de_Tasa': 'object',
-        'Rango_monto_desembolsado': 'object',
-        'Clase_deudor': 'object',
-        'Codigo_CIIU': 'float64',
-        'Codigo_Municipio': 'float64'
+      numberOfRows: 0,
+      numberOfColumns: 0,
+      dataTypes: {},
+      summaryStats: {}, // Holds summary statistics for numerical variables
+      variableDescriptions: {
+        Date: "Date of the value in ISO 8601 datetime format (YYYY-MM-DDTHH:mm+TZD)",
+        "Adj Close": "Adjusted closing price after market factors in USDs",
+        Close: "Closing price of the stock for the day in USDs",
+        High: "Highest price of the stock for the day in USDs",
+        Low: "Lowest price of the stock for the day in USDs",
+        Open: "Opening price of the stock for the day in USDs",
+        Volume: "Total number of shares traded (in millions)",
       },
-      // Summary statistics for the numerical variables
-      summaryStats: {
-        'Tipo_Entidad': { count: '25053600', mean: '1.59', std: '3.13', min: '1', q25: '1', q50: '1', q75: '1', max: '32' },
-        'Codigo_Entidad': { count: '25053600', mean: '25.05', std: '20.68', min: '1', q25: '7', q50: '26', q75: '39', max: '125' },
-        'Tasa_efectiva_promedio_ponderada': { count: '25053600', mean: '24.28', std: '15.98', min: '0', q25: '1.67', q50: '30.81', q75: '34.85', max: '87' },
-        'margen_adicional': { count: '25053600', mean: '0.20', std: '1.55', min: '-12', q25: '0', q50: '0', q75: '0', max: '33.98' },
-        'Montos_desembolsados': { count: '25053600', mean: '50595290', std: '1839356000', min: '0', q25: '206000', q50: '1000000', q75: '4234900', max: '1.02864e+12' },
-        'Numero_de_creditos_desembolsados': { count: '25053600', mean: '40.89', std: '2101.34', min: '0', q25: '1', q50: '1', q75: '4', max: '830668' },
-        'Codigo_CIIU': { count: '24802140', mean: '3842.48', std: '3288.41', min: '10', q25: '90', q50: '4644', q75: '6619', max: '9900' },
-        'Codigo_Municipio': { count: '24802140', mean: '33999.40', std: '27414.80', min: '5001', q25: '11001', q50: '23001', q75: '66001', max: '99773' }
-      }
     };
-  }
+  },
+  methods: {
+    async loadJsonData() {
+      try {
+        const response = await fetch("/data/jsons/nvda_stock.json");
+        const data = await response.json();
+
+        // Update rows and columns count
+        this.numberOfRows = data.length;
+        this.numberOfColumns = Object.keys(data[0] || {}).length;
+
+        // Infer data types
+        this.dataTypes = Object.keys(data[0] || {}).reduce((acc, key) => {
+          acc[key] = typeof data[0][key];
+          return acc;
+        }, {});
+
+        // Compute summary statistics for numerical variables
+        this.summaryStats = this.calculateSummaryStats(data);
+
+        // Log for debugging
+        console.log("Data loaded successfully:", data);
+        console.log("Summary Statistics:", this.summaryStats);
+      } catch (error) {
+        console.error("Failed to load JSON data:", error);
+      }
+    },
+
+    calculateSummaryStats(data) {
+      const stats = {};
+
+      // Identify numerical fields
+      const fields = Object.keys(data[0] || {});
+      const numericalFields = fields.filter(
+        (field) => typeof data[0][field] === "number"
+      );
+
+      numericalFields.forEach((field) => {
+        const values = data
+          .map((row) => row[field])
+          .filter((val) => !isNaN(val) && val !== null && val !== undefined); // Sanitize data
+
+        if (values.length > 0) {
+          const count = values.length;
+          const mean = values.reduce((sum, val) => sum + val, 0) / count;
+          const std = Math.sqrt(
+            values.reduce((sum, val) => sum + (val - mean) ** 2, 0) / count
+          );
+          const sortedValues = [...values].sort((a, b) => a - b);
+          const percentile = (percent) =>
+            sortedValues[Math.floor((percent / 100) * (count - 1))];
+
+          stats[field] = {
+            count,
+            mean: mean.toFixed(6),
+            std: std.toFixed(6),
+            min: Math.min(...values).toFixed(6),
+            q25: percentile(25).toFixed(6),
+            q50: percentile(50).toFixed(6),
+            q75: percentile(75).toFixed(6),
+            max: Math.max(...values).toFixed(6),
+          };
+        } else {
+          stats[field] = {
+            count: 0,
+            mean: "N/A",
+            std: "N/A",
+            min: "N/A",
+            q25: "N/A",
+            q50: "N/A",
+            q75: "N/A",
+            max: "N/A",
+          };
+        }
+      });
+
+      return stats;
+    },
+  },
+  mounted() {
+    this.loadJsonData();
+  },
 };
 </script>
 
@@ -115,8 +179,10 @@ export default {
 .container {
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 20px;
+  padding: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .header h1 {
@@ -130,7 +196,8 @@ export default {
   color: #555;
 }
 
-.content h3, h4 {
+.content h3,
+h4 {
   color: #444;
   margin-top: 20px;
 }
@@ -147,18 +214,21 @@ export default {
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: auto; /* Allows table cells to adjust based on content */
+  table-layout: auto;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ddd;
   text-align: left;
 }
 
-th, td {
-  padding: 8px;
+th,
+td {
+  padding: 12px;
   font-size: 16px;
-  white-space: normal; /* Allows text to wrap */
+  white-space: normal;
 }
 
 th {
@@ -173,8 +243,9 @@ th {
 }
 
 @media (max-width: 768px) {
-  th, td {
-    font-size: 14px; /* Smaller font size for smaller screens */
+  th,
+  td {
+    font-size: 14px;
   }
 }
 </style>

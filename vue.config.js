@@ -4,6 +4,6 @@ module.exports = defineConfig({
   transpileDependencies: true,
   publicPath:
     process.env.NODE_ENV === "production"
-      ? "/Master-s-Data-Mining-Proyect/"
+      ? "/Masters-Data-Mining-Project/"
       : "/",
 });

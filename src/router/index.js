@@ -9,7 +9,7 @@ import imputacion from "../views/entrega2/imputacion.vue";
 
 const routes = [
   { path: "/", component: LandingPage },
-  { path: "/Masters-Data-Mining-Proyect/", component: LandingPage },
+  { path: "/Masters-Data-Mining-Project/", component: LandingPage },
   { path: "/entrega1/seleccion_modelo", component: seleccion_modelo },
   { path: "/entrega2/eda", component: eda },
   { path: "/entrega2/exogenos", component: exogenos },

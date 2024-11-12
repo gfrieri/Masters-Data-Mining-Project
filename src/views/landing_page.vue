@@ -1,22 +1,26 @@
 <template>
     <div class="container">
       <div class="header">
-        <h1>Bienvenido al Proyecto de Minería de Datos</h1>
+        <h1>Master's Degree Data Mining Project</h1>
       </div>
       <div class="content">
         <p>
-          Este proyecto forma parte de la Maestría en Ingeniería de Sistemas y aborda el uso de datos abiertos para la evaluación de beneficios crediticios. A través de modelos de aprendizaje automático, se busca predecir con precisión el perfil de los usuarios y los beneficios financieros que pueden obtener.
+          This project is part of the Data Mining Course for the Master's Degree in Computer Engineering at Universidad del Norte.
+          It addresses the use of stock data to evaluate its behavior and estimate future prices.
+          Through machine learning models, we aim to predict with accuracy the stock prices of a company.
+
         </p>
         <p>
-          A continuación, podrás explorar las diferentes entregas del proyecto, donde se incluyen análisis, visualizaciones y modelos predictivos que han sido desarrollados para este propósito.
+          Here you can explore the different deliveries of the project, this includes analysis,
+          visualizations and usage of predictive models that have been trained for this purpose.
         </p>
       </div>
       <div class="actions">
-        <router-link to="/entrega1/seleccion_modelo" class="btn">Explorar Entrega 1</router-link>
-        <router-link to="/entrega2/eda" class="btn">Explorar Entrega 2</router-link>
+        <router-link to="/entrega1/seleccion_modelo" class="btn">See Delivery 1</router-link>
+        <router-link to="/entrega2/eda" class="btn">See Delivery 2</router-link>
       </div>
       <div class="footer">
-        <p>&copy; 2024 Proyecto de Minería de Datos</p>
+        <p>&copy; 2024 Data Mining Project</p>
       </div>
     </div>
   </template>

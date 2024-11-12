@@ -1,30 +1,30 @@
 <template>
   <div class="sidebar">
-    <h2>Entregas</h2>
+    <h2>Deliveries</h2>
     <ul>
       <li>
-        <router-link to="/">Inicio</router-link>
+        <router-link to="/">Main</router-link>
       </li>
       <li>
-        <router-link to="/entrega1/seleccion_modelo">Entrega 1</router-link>
+        <router-link to="/entrega1/seleccion_modelo">Delivery 1</router-link>
       </li>
       <li>
-        <router-link to="/entrega2/eda">Entrega 2</router-link>
+        <router-link to="/entrega2/eda">Delivery 2</router-link>
         <ul>
           <li>
-            <router-link to="/entrega2/eda">Descripción de los Datos</router-link>
+            <router-link to="/entrega2/eda">Data Description</router-link>
           </li>
           <li>
-            <router-link to="/entrega2/exogenos">Repositorios Exógenos</router-link>
+            <router-link to="/entrega2/exogenos">External Repositories</router-link>
           </li>
           <li>
-            <router-link to="/entrega2/visualizacion">Visualización de los Datos</router-link>
+            <router-link to="/entrega2/visualizacion">Data Visualization</router-link>
           </li>
           <li>
-            <router-link to="/entrega2/limpieza">Limpieza de los Datos</router-link>
+            <router-link to="/entrega2/limpieza">Data Cleansing</router-link>
           </li>
           <li>
-            <router-link to="/entrega2/imputacion">Imputación de Datos</router-link>
+            <router-link to="/entrega2/imputacion">Data Imputation</router-link>
           </li>
         </ul>
       </li>
