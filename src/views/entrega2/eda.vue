@@ -93,8 +93,12 @@ export default {
   },
   methods: {
     async loadJsonData() {
+      const baseUrl =
+      process.env.NODE_ENV === "production"
+        ? "/Masters-Data-Mining-Project"
+        : "";
       try {
-        const response = await fetch("/data/json/nvda_stock.json");
+        const response = await fetch(`${baseUrl}/data/json/nvda_stock.json`);
         const data = await response.json();
 
         // Update rows and columns count
