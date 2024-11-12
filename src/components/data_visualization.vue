@@ -40,14 +40,14 @@
   
       const loadChartData = async () => {
         try {
-        nvdaStockData.value = (await axios.get("/data/jsons/nvda_stock.json")).data;
-        sp500Data.value = (await axios.get("/data/jsons/sp500.json")).data;
-        vixData.value = (await axios.get("/data/jsons/vix.json")).data;
-        unemploymentData.value = (await axios.get("/data/jsons/unemployment.json")).data;
-        cpiData.value = (await axios.get("/data/jsons/cpi.json")).data;
-        interestRateData.value = (await axios.get("/data/jsons/interest_rate.json")).data;
-        gdpData.value = (await axios.get("/data/jsons/gdp.json")).data;
-        employeesData.value = (await axios.get("/data/jsons/employees.json")).data;
+        nvdaStockData.value = (await axios.get("/data/json/nvda_stock.json")).data;
+        sp500Data.value = (await axios.get("/data/json/sp500.json")).data;
+        vixData.value = (await axios.get("/data/json/vix.json")).data;
+        unemploymentData.value = (await axios.get("/data/json/unemployment.json")).data;
+        cpiData.value = (await axios.get("/data/json/cpi.json")).data;
+        interestRateData.value = (await axios.get("/data/json/interest_rate.json")).data;
+        gdpData.value = (await axios.get("/data/json/gdp.json")).data;
+        employeesData.value = (await axios.get("/data/json/employees.json")).data;
         createCharts();
         } catch (error) {
           console.error("Failed to load data:", error);

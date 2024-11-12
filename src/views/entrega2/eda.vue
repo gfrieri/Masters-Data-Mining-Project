@@ -94,7 +94,7 @@ export default {
   methods: {
     async loadJsonData() {
       try {
-        const response = await fetch("/data/jsons/nvda_stock.json");
+        const response = await fetch("/data/json/nvda_stock.json");
         const data = await response.json();
 
         // Update rows and columns count
