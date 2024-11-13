@@ -1,0 +1,84 @@
+{
+    "correlation_matrix": {
+        "Adj_Close_NVDA": {
+            "Adj_Close_NVDA": 1.0,
+            "Adj_Close_SP500": 0.9269109539620088,
+            "Adj_Close_VIX": -0.7473111863842375,
+            "Unemployment_Rate": -0.7076278978890733,
+            "CPI": 0.8199547671291888,
+            "Interest_Rate": 0.2777895761730929,
+            "GDP": 0.8417627737770578,
+            "Employee_Count": 0.892419433903493
+        },
+        "Adj_Close_SP500": {
+            "Adj_Close_NVDA": 0.9269109539620088,
+            "Adj_Close_SP500": 1.0,
+            "Adj_Close_VIX": -0.7468545121769039,
+            "Unemployment_Rate": -0.6840182335410379,
+            "CPI": 0.9650523136719312,
+            "Interest_Rate": 0.10758210004522785,
+            "GDP": 0.9785139277063141,
+            "Employee_Count": 0.9904209104237804
+        },
+        "Adj_Close_VIX": {
+            "Adj_Close_NVDA": -0.7473111863842375,
+            "Adj_Close_SP500": -0.7468545121769039,
+            "Adj_Close_VIX": 1.0,
+            "Unemployment_Rate": 0.6065724794258827,
+            "CPI": -0.6913058691747143,
+            "Interest_Rate": -0.30469748937627983,
+            "GDP": -0.7086008600739077,
+            "Employee_Count": -0.7129418292370443
+        },
+        "Unemployment_Rate": {
+            "Adj_Close_NVDA": -0.7076278978890733,
+            "Adj_Close_SP500": -0.6840182335410379,
+            "Adj_Close_VIX": 0.6065724794258827,
+            "Unemployment_Rate": 1.0,
+            "CPI": -0.5158146890504629,
+            "Interest_Rate": -0.7750664563143336,
+            "GDP": -0.5756006161382209,
+            "Employee_Count": -0.5857503110089799
+        },
+        "CPI": {
+            "Adj_Close_NVDA": 0.8199547671291888,
+            "Adj_Close_SP500": 0.9650523136719312,
+            "Adj_Close_VIX": -0.6913058691747143,
+            "Unemployment_Rate": -0.5158146890504629,
+            "CPI": 1.0,
+            "Interest_Rate": -0.1190476257758293,
+            "GDP": 0.9974228764700607,
+            "Employee_Count": 0.9891041073111018
+        },
+        "Interest_Rate": {
+            "Adj_Close_NVDA": 0.2777895761730929,
+            "Adj_Close_SP500": 0.10758210004522785,
+            "Adj_Close_VIX": -0.30469748937627983,
+            "Unemployment_Rate": -0.7750664563143336,
+            "CPI": -0.1190476257758293,
+            "Interest_Rate": 1.0,
+            "GDP": -0.04983854761711765,
+            "Employee_Count": -0.023783818143618643
+        },
+        "GDP": {
+            "Adj_Close_NVDA": 0.8417627737770578,
+            "Adj_Close_SP500": 0.9785139277063141,
+            "Adj_Close_VIX": -0.7086008600739077,
+            "Unemployment_Rate": -0.5756006161382209,
+            "CPI": 0.9974228764700607,
+            "Interest_Rate": -0.04983854761711765,
+            "GDP": 1.0,
+            "Employee_Count": 0.9930863501428682
+        },
+        "Employee_Count": {
+            "Adj_Close_NVDA": 0.892419433903493,
+            "Adj_Close_SP500": 0.9904209104237804,
+            "Adj_Close_VIX": -0.7129418292370443,
+            "Unemployment_Rate": -0.5857503110089799,
+            "CPI": 0.9891041073111018,
+            "Interest_Rate": -0.023783818143618643,
+            "GDP": 0.9930863501428682,
+            "Employee_Count": 1.0
+        }
+    }
+}

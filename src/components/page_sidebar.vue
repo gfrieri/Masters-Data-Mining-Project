@@ -28,6 +28,17 @@
           </li>
         </ul>
       </li>
+      <li>
+        <router-link to="/entrega3/migracion_bq">Delivery 3</router-link>
+        <ul>
+          <li>
+            <router-link to="/entrega3/migracion_bq">Data Migration to BigQuery</router-link>
+          </li>
+          <li>
+            <router-link to="/entrega3/preparacion_modelo">Model Preparation</router-link>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>

@@ -52,7 +52,7 @@
       <h3>Repositories:</h3>
       <ul>
         <li>
-          <a href="https://fred.stlouisfed.org/series/GDP" target="_blank">Gross Domestic Product (GPD)</a>
+          <a href="https://fred.stlouisfed.org/series/GDP" target="_blank">Gross Domestic Product (GDP)</a>
         </li>
         <li>
           <a href="https://fred.stlouisfed.org/series/UNRATE" target="_blank">Unemployment Rate (UNRATE)</a>

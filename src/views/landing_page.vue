@@ -18,6 +18,8 @@
       <div class="actions">
         <router-link to="/entrega1/seleccion_modelo" class="btn">See Delivery 1</router-link>
         <router-link to="/entrega2/eda" class="btn">See Delivery 2</router-link>
+        <router-link to="/entrega3/migracion_bq" class="btn">See Delivery 3</router-link>
+        <router-link to="/" class="btn">See Delivery 4</router-link>
       </div>
       <div class="footer">
         <p>&copy; 2024 Data Mining Project</p>
