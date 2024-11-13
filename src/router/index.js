@@ -8,6 +8,7 @@ import limpieza from "../views/entrega2/limpieza.vue";
 import imputacion from "../views/entrega2/imputacion.vue";
 import migracion_bq from "../views/entrega3/migracion_bq.vue";
 import preparacion_modelo from "../views/entrega3/preparacion_modelo.vue";
+import presentacion_dashboard from "../views/entrega4/presentacion_dashboard.vue";
 
 const routes = [
   { path: "/", component: LandingPage },
@@ -20,6 +21,10 @@ const routes = [
   { path: "/entrega2/imputacion", component: imputacion },
   { path: "/entrega3/migracion_bq", component: migracion_bq },
   { path: "/entrega3/preparacion_modelo", component: preparacion_modelo },
+  {
+    path: "/entrega4/presentacion_dashboard",
+    component: presentacion_dashboard,
+  },
 ];
 
 const router = createRouter({
