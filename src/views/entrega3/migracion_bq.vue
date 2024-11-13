@@ -90,7 +90,7 @@
         <li>
           <b>Fact Table: `Stock_History`</b>
           <ul>
-            <li><b>Date:</b> Stored as `DATE`, partitioned for optimized querying.</li>
+            <li><b>Date:</b> Stored as `Date`, partitioned for optimized querying.</li>
             <li>
               <b>NVIDIA Stock Data:</b> Daily stock data, including open, high, low, close, adjusted close, and volume.
             </li>
@@ -106,28 +106,38 @@
           <b>Dimension Tables:</b>
           <ul>
             <li>
-              <b>Companies:</b> Metadata about NVIDIA using available employee data.
-              <ul>
-                <li>`company_id`: Unique identifier (e.g., "NVIDIA").</li>
-                <li>`company_name`: "NVIDIA Corporation".</li>
-                <li>`sector`: Technology.</li>
-                <li>`employee_count`: Historical employee data from the NVIDIA employee dataset.</li>
-              </ul>
-            </li>
-            <li>
-              <b>Economic Indicators:</b> A dimension table storing historical values for macroeconomic indicators.
-              <ul>
-                <li>`indicator_name`: Name of the indicator (e.g., "CPI", "GDP").</li>
-                <li>`value`: Value of the indicator.</li>
-                <li>`date`: Date of the indicator.</li>
-              </ul>
-            </li>
-            <li>
               <b>Market Data:</b> Historical metrics for major indices like SP500 and VIX.
               <ul>
-                <li>`market_index_name`: Name of the index (e.g., "SP500", "VIX").</li>
-                <li>`value`: Value of the index.</li>
-                <li>`date`: Date of the index value.</li>
+                <li>`Value`: Value of the index.</li>
+                <li>`Date`: Date of the index value.</li>
+              </ul>
+            </li>
+            <li>
+              <b>Stock History Data:</b> A dimension table storing historical of NVIDIA stock prices.
+              <ul>
+                <li>`Date`: Date of the indicator.</li>
+                <li>`Adj Close`: Adjusted close price.</li>
+                <li>`Close`: Close price.</li>
+                <li>`High`: Highest price.</li>
+                <li>`Low`: Lowest price.</li>
+                <li>`Open`: Initial price.</li>
+                <li>`Volume`: Stock quantity in the market.</li>
+              </ul>
+            </li>
+            <li>
+              <b>Economic Indicators:</b> Tables storing historical values for macroeconomic indicators.
+              <ul>
+                <li>`Date`: Date of the indicator.</li>
+                <li>`Value`: Value of the indicator.</li>
+              </ul>
+            </li>
+            <li>
+              <b>Company Metadata:</b> Company related data like employees and growth.
+              <ul>
+                <li>`Date`: Date of the indicator.</li>
+                <li>`Employees`: Number of employees registered the fiscal year.</li>
+                <li>`Change`: Difference between current and previous number of emmployees.</li>
+                <li>`Growth`: Rate of change in the number of employees.</li>
               </ul>
             </li>
           </ul>
